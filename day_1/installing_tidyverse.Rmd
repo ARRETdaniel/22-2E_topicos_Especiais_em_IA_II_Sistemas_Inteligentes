@@ -1,0 +1,11 @@
+```{r}
+install.packages("tidyverse")
+install.packages("palmerpenguins")
+```
+```{r}
+library(tidyverse)
+library(palmerpenguins)
+```
+```{r}
+penguins
+```
