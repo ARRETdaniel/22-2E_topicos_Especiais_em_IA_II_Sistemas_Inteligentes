@@ -30,11 +30,13 @@ Run **file.Rmd**'s Chunk.
 
 ### Assignments / Atividades:
 
-- [day_1](report/report.pdf)
+- [day_1](day_1)
+- [Lista 1](listas/list_1.pdf)
+- [Lista 2](listas/list_2.Rmd)
 
 ### Final Project / Projeto final :
 
-[Case Study](projectFinal\Case-Study-2-_-How-can-a-wellness-technology-company-play-it-smart.pdf).
+- [Case Study](projectFinal/Case-Study-2-_-How-can-a-wellness-technology-company-play-it-smart.pdf)
 ### Contact
 
 If you want to contact with me you can reach me at [Twitter](https://twitter.com/ARRETdaniel).
