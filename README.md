@@ -28,11 +28,16 @@ cd ./day_#
 Run **file.Rmd**'s Chunk.
 
 
-### Assignments / Atividades:
+### Aulas / Atividades:
+
+#### Aulas
 
 - [day_1](day_1)
-- [Lista 1](listas/list_1.pdf)
-- [Lista 2](listas/list_2.Rmd)
+
+#### Atividades
+
+- [Lista 1](listas/lista_1.pdf)
+- [Lista 2](listas/lista_2.Rmd)
 
 ### Final Project / Projeto final :
 
