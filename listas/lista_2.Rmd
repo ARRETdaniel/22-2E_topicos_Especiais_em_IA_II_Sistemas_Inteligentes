@@ -1,0 +1,151 @@
+```{r}
+install.packages("tidyverse")
+install.packages("palmerpenguins")
+```
+```{r}
+install.packages("skimr")
+```
+```{r}
+library(tidyverse)
+library(palmerpenguins)
+```
+```{r}
+library(skimr)
+```
+```{r}
+penguins
+glimpse(penguins)
+```
+# 1. Quantas linhas tem o penguins? E quantas colunas?
+```{r}
+skim_without_charts(penguins)
+```
+# 2. O que a variável bill_depth_mm no penguins descreve? (dica: use a função ?penguins)
+```{r}
+?penguins
+```
+```{r}
+ggplot(
+  data = penguins,
+  mapping = aes(x = flipper_length_mm, y = body_mass_g)
+) +
+  geom_point()
+#> Warning: Removed 2 rows containing missing values (`geom_point()`).
+```
+
+# 3. Faça um gráfico de dispersão (scatterplot) do bill_depth_mm vs bill_length_mm. Descreva a relação entre essas duas variáveis
+```{r}
+ggplot(
+  data = penguins,
+  mapping = aes(x = flipper_length_mm, y = body_mass_g)
+) +
+  geom_point(aes(color = species, shape = species)) +
+  geom_smooth() +
+  labs(
+    title = "Body mass and flipper length",
+    subtitle = "Dimensions for Adelie, Chinstrap, and Gentoo Penguins",
+    x = "Flipper length (mm)",
+    y = "Body mass (g)",
+    color = "Species",
+    shape = "Species"
+  )
+```
+# 4. O que acontece se você fizer um gráfico de dispersão (scatterplot) de species vs bill_depth_mm? Esse gráfico pode ser útil?
+```{r}
+ggplot(
+  data = penguins,
+  mapping = aes(x = species, y = bill_depth_mm)
+) +
+  geom_point(aes(color = species, shape = species)) +
+  geom_smooth() +
+  labs(
+    title = "species vs bill_depth_mm",
+    subtitle = "-",
+    x = "species",
+    y = "bill_depth_mm",
+    color = "Species",
+    shape = "Species"
+  )
+```
+# 5. Por que o código dá erro e como poderíamos resolver? ggplot( data = penguins ) + geom_point()
+```{r}
+# adicionando variáveis para o plot.
+ggplot(
+  penguins,
+  aes(
+    x = bill_depth_mm,
+    y = bill_length_mm
+  )
+) +
+  geom_point()
+```
+# 6. O que o argumento na.rm faz no geom_point()? Qual é o valor padrão desse argumento? Crie um gráfico de dispersão (scatterplot) onde você usa com sucesso este argumento definido como TRUE.
+```{r}
+print(penguins)
+```
+```{r}
+ggplot(
+  penguins,
+  aes(
+    x = sex, # x is neighborhood
+    fill = sex
+  )
+) + # fill is neighborhood
+  geom_bar()
+```
+```{r}
+penguins %>%
+  filter(!is.na(sex)) %>% # filter on non-missing values
+  ggplot(aes(
+    x = sex, # x is sex
+    fill = sex
+  )) + # fill is sex
+  geom_bar()
+```
+# 7. Adicione a seguinte legenda ao gráfico que você fez no exercício anterior: “Os dados vêm do pacote palmerpenguins”. Dica: dê uma olhada na documentação de labs(). [código]
+
+```{r}
+penguins %>%
+  filter(!is.na(sex)) %>% # filter on non-missing values
+  ggplot(aes(
+    x = sex, # x is sex
+    fill = sex
+  )) + # fill is sex
+  geom_bar() + labs(caption = "Os dados vêm do pacote palmerpenguins")
+```
+# 8. Recrie a seguinte visualização. Para qual estética o bill_depth_mm deve ser mapeado? E deve ser mapeado no nível global ou no nível geom?
+```{r}
+# colour = "bill_depth_mm"
+# geom
+ggplot(
+  data = penguins,
+  mapping = aes(
+    x = flipper_length_mm,
+    y = body_mass_g,
+    colour = bill_depth_mm
+  )
+) +
+  geom_point() +
+  geom_smooth() +
+  labs(
+    title = "Bill depth and length",
+    subtitle = "Dimensions for Adelie, Chinstrap, and Gentoo Penguins",
+    x = "flipper_length_mm", y = "body_mass_g",
+    colour = "bill_depth_mm"
+  )
+```
+# 9. Execute esse código em sua cabeça e preveja como será a saída. Em seguida, execute o código em R e verifique suas previsões. Foi o que você esperava?
+```{r}
+ggplot(
+  data = penguins,
+  mapping = aes(x = flipper_length_mm, y = body_mass_g, color = island)
+) +
+  geom_point() +
+  geom_smooth(se = FALSE)
+```
+
+# 10. Esses códigos geram gráficos iguais ou diferentes? Por que?
+
+```{r}
+# O mesmo gráfico. Pois você só está variando os dados de plot para local e global.
+```
