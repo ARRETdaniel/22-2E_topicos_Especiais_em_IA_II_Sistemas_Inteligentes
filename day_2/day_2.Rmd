@@ -1,0 +1,72 @@
+```{r}
+library(tidyverse)
+library(palmerpenguins)
+library(skimr)
+```
+
+```{r}
+View(penguins$sex)
+```
+```{r}
+ggplot(
+  data = penguins,
+  mapping = aes(x = flipper_length_mm, y = body_mass_g)
+) +
+  geom_point(aes(color = species, shape = species)) +
+  geom_smooth()
+
+```
+```{r save your plot}
+ggsave("name_chart.png",
+  width = 16,
+  height = 8
+)
+```
+```{r following an order in a bar graph}
+fct_infreq()
+
+```
+```{r}
+ggplot(
+  data = penguins, aes(x = body_mass_g)
+) +
+  geom_histogram(binwidth = 200)
+
+```
+```{r}
+penguins |>
+  count(cut_width(body_mass_g, 200))
+```
+```{r}
+ggplot(penguins, aes(x = species, y = body_mass_g)) +
+  geom_boxplot()
+```
+```{r}
+View(penguins$species)
+
+```
+```{r}
+ggplot(penguins, aes(x = body_mass_g, color = species)) +
+  geom_freqpoly(binwidth = 200, linewidth = 0.75)
+
+```
+```{r}
+ggplot(penguins, aes(x = body_mass_g, color = species, fill = species)) +
+  geom_density(alpha = NA)
+
+```
+```{r}
+ggplot(penguins, aes(x = island, fill = species)) +
+  geom_bar()
+
+```
+```{r}
+ggplot(penguins, aes(x = island, fill = species)) +
+  geom_bar(position = "fill") + labs(y = "frequencia relativa")
+
+```
+```{r}
+ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(aes(color = species, shape = species)) +
+  facet_wrap(~island)
+```

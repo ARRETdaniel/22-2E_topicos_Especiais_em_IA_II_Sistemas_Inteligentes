@@ -28,7 +28,7 @@ cd ./day_#
 Run **file.Rmd**'s Chunk.
 
 
-### Aulas / Atividades:
+## Aulas / Atividades:
 
 #### Aulas
 
@@ -39,7 +39,7 @@ Run **file.Rmd**'s Chunk.
 - [Lista 1](listas/lista_1.pdf)
 - [Lista 2](listas/lista_2.Rmd)
 
-### Final Project / Projeto final :
+## Final Project / Projeto final :
 
 - [Case Study](projectFinal/Case-Study-2-_-How-can-a-wellness-technology-company-play-it-smart.pdf)
 ### Contact
