@@ -112,6 +112,7 @@ penguins %>%
     fill = sex
   )) + # fill is sex
   geom_bar() + labs(caption = "Os dados vêm do pacote palmerpenguins")
+# https://agrogan1.github.io/myposts/remove-NA-from-ggplot.html
 ```
 # 8. Recrie a seguinte visualização. Para qual estética o bill_depth_mm deve ser mapeado? E deve ser mapeado no nível global ou no nível geom?
 ```{r}

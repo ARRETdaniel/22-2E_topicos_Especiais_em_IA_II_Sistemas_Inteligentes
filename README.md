@@ -1,8 +1,6 @@
-# updating INIT
+# R for Data Science (2e)
 
-Este projeto se propõe a desenvolver uma aplicação que possibilita a comunicação de forma descentralizada de sistemas por meio de cliente-servidor e P2P.
-
-This project proposes to develop an application that enables the communication of systems in a decentralized way through client-server and P2P.
+In this [book](https://r4ds.hadley.nz/), you will find a practicum of skills for data science. Just as a chemist learns how to clean test tubes and stock a lab, you’ll learn how to clean data and draw plots—and many other things besides.
 
 ## Requirements
 
@@ -36,6 +34,7 @@ Run **file.Rmd**'s Chunk.
 
 ### Final Project / Projeto final :
 
+[Case Study](projectFinal\Case-Study-2-_-How-can-a-wellness-technology-company-play-it-smart.pdf).
 ### Contact
 
 If you want to contact with me you can reach me at [Twitter](https://twitter.com/ARRETdaniel).
