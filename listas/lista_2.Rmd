@@ -37,15 +37,15 @@ ggplot(
 ```{r}
 ggplot(
   data = penguins,
-  mapping = aes(x = flipper_length_mm, y = body_mass_g)
+  mapping = aes(x = bill_depth_mm, y = bill_length_mm)
 ) +
   geom_point(aes(color = species, shape = species)) +
   geom_smooth() +
   labs(
-    title = "Body mass and flipper length",
+    title = "bill_depth_mm vs bill_length_mm",
     subtitle = "Dimensions for Adelie, Chinstrap, and Gentoo Penguins",
-    x = "Flipper length (mm)",
-    y = "Body mass (g)",
+    x = "bill_depth_mm",
+    y = "bill_length_mm",
     color = "Species",
     shape = "Species"
   )
