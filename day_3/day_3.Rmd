@@ -133,8 +133,7 @@ flights |>
 flights |>
   group_by(dest) |>
   slice_max(arr_delay, n = 1) |>
-  select(dest, arr_delay) |>
-  arrange(desc(arr_delay))
+ select(dest, arr_delay) |>
 # select(dest, arr_delay) |>
 # arrange(desc(dest, arr_delay))
 ```

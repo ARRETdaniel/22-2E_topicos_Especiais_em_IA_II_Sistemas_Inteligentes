@@ -1,0 +1,156 @@
+```{r}
+install.packages("nycflights13")
+```
+```{r}
+library(nycflights13)
+library(tidyverse)
+```
+```{r}
+nycflights13::flights
+```
+```{r}
+library(skimr)
+```
+```{r}
+View(flights)
+```
+```{r}
+skim_without_charts(nycflights13::flights)
+```
+```{r}
+?nycflights13::flights
+```
+# 1. Escreva o código para encontrar todos os voos que:
+# a)Tiveram um atraso de chegada de duas ou mais horas
+```{r}
+atraso_2horas <- flights %>%
+  filter(arr_delay > 120)
+atraso_2horas %>%
+  select(arr_delay)
+```
+# b) Voaram para Houston (IAH ou HOU)
+```{r}
+flight_to_houston <- flights %>%
+  filter(dest %in% c("HOU", "IAH"))
+flight_to_houston %>%
+  select(dest)
+unique(flight_to_houston$dest)
+# https://www.geeksforgeeks.org/filter-multiple-values-on-a-string-column-in-r-using-dplyr/
+```
+# c) Foram operados pela United, American ou Delta
+```{r}
+flight_carrier <- flights %>%
+  filter(carrier %in% c("US", "DL", "UA"))
+unique(flight_carrier$carrier)
+flight_carrier
+```
+# d) Partiu no verão (julho, agosto e setembro)
+```{r}
+summer_flight <- flights %>%
+  filter(month %in% c(7, 8, 9)) %>%
+  unique(summer_flight$month)
+summer_flight
+```
+# e) Chegou com mais de duas horas de atraso, mas não saiu atrasado
+```{r}
+flights %>%
+  filter(dep_delay <= 10 & arr_delay >= 120) %>%
+  arrange(desc(dep_delay))
+```
+# f) Atrasaram-se em pelo menos uma hora, mas compensaram mais de 30 minutos de voo
+```{r}
+flights %>%
+  filter(dep_delay >= 60 & arr_delay <= -30) %>%
+  arrange(desc(dep_delay))
+```
+# 2. Ordene o dataset `flights` para encontrar os voos com os maiores atrasos de partida. Encontre os voos que partiram mais cedo pela manhã.
+```{r}
+early_morning_flights <- flights %>%
+  arrange(desc(dep_delay)) %>%
+  filter(dep_time <= 10)
+early_morning_flights
+```
+# 3. Ordene o dataset `flights` para encontrar os voos mais rápidos (dica: é um cálculo)
+```{r}
+install.packages("viridis")
+```
+```{r}
+install.packages("ggsci")
+```
+```{r}
+library(viridis)
+library(ggsci)
+
+```
+```{r}
+fastest_flight <- flights %>%
+  mutate(
+    speed = distance / air_time * 60,
+    .before = 1
+  ) %>%
+  arrange(desc(speed))
+fastest_flight
+max(fastest_flight$speed, na.rm = TRUE)
+# https://www.digitalocean.com/community/tutorials/min-max-in-r
+
+ggplot(
+  data = fastest_flight,
+  mapping = aes(x = air_time, y = distance)
+) +
+  geom_point(aes(shape = carrier, color = carrier), size = 4) +
+    scale_shape_manual(values = c(1:16)) +
+    scale_color_igv() +
+    scale_fill_igv() +
+    theme_minimal() +
+    # theme_dark() +
+    geom_smooth() + labs(
+      title = "Speed and Distance",
+      subtitle = "Speed and Distance Graph",
+      x = "Air Time",
+      y = "Distance",
+      color = "Carrier",
+      shape = "Carrier"
+    )
+
+ggsave("listas/distanceXtime_chart.png",
+  width = 16,
+  height = 16
+)
+# https://www.datanovia.com/en/blog/ggplot-point-shapes-best-tips/
+# https://www.datanovia.com/en/blog/ggplot-colors-best-tricks-you-will-love/
+# https://cran.r-project.org/web/packages/ggsci/vignettes/ggsci.html
+```
+# 4. Houve pelo menos um voo em cada dia do ano 2013?
+```{r}
+every_day_year_flight <- flights |>
+  filter(year == 2013) |>
+  group_by(month) |>
+  summarize(
+    data = unique(day, na.rm = TRUE)
+  )
+every_day_year_flight
+
+```
+```{r}
+year <- flights %>%
+  filter(year == 2012) %>%
+  group_by(month) %>%
+  summarise(
+  data = unique(day, na.rm = TRUE)
+)
+year
+```
+
+# 5. Quais voos viajaram a maior distância? Quais viajaram as distâncias mais curtas?
+
+```{r}
+distance_max_min <- flights %>%
+  group_by(flight) %>%
+  distance_max_min() %>%
+  arrange(desc(distance))
+distance_max_min
+```
+```{r}
+
+
+```
