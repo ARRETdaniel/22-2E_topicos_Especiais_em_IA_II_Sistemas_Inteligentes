@@ -80,7 +80,6 @@ install.packages("ggsci")
 ```{r}
 library(viridis)
 library(ggsci)
-
 ```
 ```{r}
 fastest_flight <- flights %>%
@@ -98,19 +97,20 @@ ggplot(
   mapping = aes(x = air_time, y = distance)
 ) +
   geom_point(aes(shape = carrier, color = carrier), size = 4) +
-    scale_shape_manual(values = c(1:16)) +
-    scale_color_igv() +
-    scale_fill_igv() +
-    theme_minimal() +
-    # theme_dark() +
-    geom_smooth() + labs(
-      title = "Speed and Distance",
-      subtitle = "Speed and Distance Graph",
-      x = "Air Time",
-      y = "Distance",
-      color = "Carrier",
-      shape = "Carrier"
-    )
+  scale_shape_manual(values = c(1:16)) +
+  scale_color_igv() +
+  scale_fill_igv() +
+  theme_minimal() +
+  # theme_dark() +
+  geom_smooth() +
+  labs(
+    title = "Speed and Distance",
+    subtitle = "Speed and Distance Graph",
+    x = "Air Time",
+    y = "Distance",
+    color = "Carrier",
+    shape = "Carrier"
+  )
 
 ggsave("listas/distanceXtime_chart.png",
   width = 16,
@@ -129,28 +129,159 @@ every_day_year_flight <- flights |>
     data = unique(day, na.rm = TRUE)
   )
 every_day_year_flight
-
 ```
 ```{r}
 year <- flights %>%
-  filter(year == 2012) %>%
+  filter(year == 2013) %>%
   group_by(month) %>%
   summarise(
-  data = unique(day, na.rm = TRUE)
-)
+    data = unique(day, na.rm = TRUE)
+  )
 year
+```
+```{r}
+every_day_year_flight <- flights %>%
+  filter(year == 2013) %>%
+  group_by(month) %>%
+  tally(day) %>%
+  arrange(desc(day))
+
+every_day_year_flight
 ```
 
 # 5. Quais voos viajaram a maior distância? Quais viajaram as distâncias mais curtas?
 
 ```{r}
 distance_max_min <- flights %>%
-  group_by(flight) %>%
-  distance_max_min() %>%
-  arrange(desc(distance))
+  group_by(flight, distance) %>%
+  arrange(desc(distance)) %>%
+  mutate(
+    .keep = "used"
+  )
+
 distance_max_min
+# https://r4ds.hadley.nz/data-transform.html#sec-sample-size
 ```
 ```{r}
+distance_max_mi <- flights %>%
+  arrange(desc(distance)) %>%
+  relocate(flight, distance,
+    .before = year
+  )
+distance_max_mi
+```
 
+# 4.3.5 Exercícios sobre colunas
+# 1. Compare `air_time` com `arr time - dep_time`. O que você espera ver? O que você viu? O que precisa fazer para consertar?
+```{r}
+library(ggsci)
+ggplot(
+  data = flights,
+  mapping = aes(x = air_time, y = (arr_time - dep_time))
+) +
+  geom_point() +
+  scale_color_igv() +
+  scale_fill_igv() +
+  theme_minimal()
+  # theme_dark() +
 
+```
+# 2. Compare `dep_time`, `sched_dep_time` e `dep_delay`. Como você espera que esses três números se relacionem?
+```{r}
+#dep_time seria o tempo de decolagem, sched_dep_time o horário que o avião deveria decolcar,  dep_delay o horario de atraso de decolagem.
+```
+# 4. O que acontece se você incluir um nome de variável múltiplas vezes em uma chamada `select()`?
+```{r}
+test <- flights %>%
+  select(dep_delay, dep_delay, dep_delay)
+test
+```
+# 5. O que a função `any_of()` faz? Como ela pode ser útil com o seguinte vetor?
+```{r}
+#Description
+#Constructs a character class, sometimes called a character set. With this particular expression, you can tell the regex engine to match only one out of several characters. Simply place the characters you want to match between square brackets.
+#ref. https://www.rdocumentation.org/packages/RVerbalExpressions/versions/0.0.0.9000/topics/any_of
+
+# create an expression
+x <- any_of(value = "year", "month", "day", "dep_delay", "arr_delay")
+
+grepl(x, "year") # should be true
+grepl(x, "d") # should be false
+
+# }
+```
+#
+```{r}
+select(flights, contains("TIME"))
+```
+# 4.4.6 Exercícios sobre grupos
+# 1. Qual operadora tem os piores atrasos?
+```{r}
+worst_arr_time <- flights %>%
+  group_by(carrier) %>%
+  arrange(desc(arr_time)) %>%
+  mutate(
+    .keep = "used"
+  )
+
+#https://www.geeksforgeeks.org/count-unique-values-by-group-in-r/
+worst_arr_time
+```
+# 2. Encontre o voo mais atrasado para cada destino e Empresa
+```{r}
+worst_arr_time_dest <- flights %>%
+  aggregate(arr_delay ~ carrier, function(x) max(unique(x)))
+worst_arr_time_dest
+# https://www.geeksforgeeks.org/count-unique-values-by-group-in-r/
+```
+```{r}
+worst_arr_time_dest <- flights %>%
+  aggregate(arr_delay ~ dest, function(x) min(unique(x)))
+worst_arr_time_dest
+# https://www.geeksforgeeks.org/count-unique-values-by-group-in-r/
+```
+```{r}
+min(flights$arr_delay, na.rm = TRUE)
+```
+```{r}
+max(flights$arr_delay, na.rm = TRUE)
+```
+# 3. Como os atrasos variam ao longo do dia? Ilustre a resposta com um gráfico.
+
+```{r}
+library(ggsci)
+
+ggplot(
+  data = flights,
+  mapping = aes(x = day, y = arr_delay)
+) +
+  geom_point(aes(shape = carrier, color = carrier), size = 2) +
+  scale_shape_manual(values = c(1:16)) +
+  scale_color_igv() +
+  scale_fill_igv() +
+  theme_minimal() +
+  # theme_dark() +
+
+  labs(
+    title = "Delay Throughout the day",
+    subtitle = "Graph",
+    x = "day",
+    y = "arr_delay",
+
+    color = "Carrier",
+    shape = "Carrier"
+  )
+
+ggsave("listas/delay_day_chart.pdf",
+  width = 16,
+  height = 16
+)
+# theme_dark() +
+
+```
+# 4. O que acontece se você fornecer um `n` negativo para `slice_min()` e as suas amigas?
+```{r}
+test <- flights %>%
+  slice_min(month, n = -1)
+test
 ```
