@@ -177,7 +177,7 @@ distance_max_mi
 library(ggsci)
 ggplot(
   data = flights,
-  mapping = aes(x = air_time, y = (arr_time - dep_time))
+  mapping = aes(x = air_time , y = (arr_time - dep_time))
 ) +
   geom_point() +
   scale_color_igv() +
@@ -203,6 +203,8 @@ test
 #ref. https://www.rdocumentation.org/packages/RVerbalExpressions/versions/0.0.0.9000/topics/any_of
 
 # create an expression
+
+
 x <- any_of(value = "year", "month", "day", "dep_delay", "arr_delay")
 
 grepl(x, "year") # should be true
@@ -227,16 +229,17 @@ worst_arr_time <- flights %>%
 #https://www.geeksforgeeks.org/count-unique-values-by-group-in-r/
 worst_arr_time
 ```
-# 2. Encontre o voo mais atrasado para cada destino e Empresa
 ```{r}
 worst_arr_time_dest <- flights %>%
   aggregate(arr_delay ~ carrier, function(x) max(unique(x)))
 worst_arr_time_dest
 # https://www.geeksforgeeks.org/count-unique-values-by-group-in-r/
 ```
+
+# 2. Encontre o voo mais atrasado para cada destino e Empresa
 ```{r}
 worst_arr_time_dest <- flights %>%
-  aggregate(arr_delay ~ dest, function(x) min(unique(x)))
+  aggregate(arr_delay ~ dest, function(x) max(unique(x)))
 worst_arr_time_dest
 # https://www.geeksforgeeks.org/count-unique-values-by-group-in-r/
 ```
@@ -284,4 +287,51 @@ ggsave("listas/delay_day_chart.pdf",
 test <- flights %>%
   slice_min(month, n = -1)
 test
+```
+# 6.Suponha que você tem o seguinte data frame:
+```{r}
+df <- tibble(
+  x = 1:5,
+  y = c("a", "b", "a", "a", "b"),
+  z = c("K", "K", "L", "L", "K")
+)
+```
+# 6. a) O que esse código faz? Rode, analise o resultado e diga o que o `group_by()` faz.
+```{r}
+df |>
+  group_by(y)
+```
+# b) O que o código a seguir faz? Execute-o, analise o resultado e descreva o que o `array()` faz. Comente também como é diferente do `group_by()` na pergunta.
+```{r}
+df |>
+  arrange(y)
+```
+# c) O que faz o código a seguir? Execute-o, analise o resultado e descreva o que essa faz pipeline (sequência de pipes).
+```{r}
+df |>
+  group_by(y) |>
+  summarize(mean_x = mean(x))
+```
+# d) O que faz o código a seguir? Execute-o, analise o resultado e descreva o que essa pipeline faz. Depois comente sobre o que a mensagem diz.
+```{r}
+df |>
+  group_by(y, z) |>
+  summarize(mean_x = mean(x))
+```
+#  e) O que faz o código a seguir? Execute-o, analise o resultado e descreva o que essa pipeline faz. Como esse output é diferente do output anterior (questão d)?
+```{r}
+df |>
+  group_by(y, z) |>
+  summarize(mean_x = mean(x), .groups = "drop")
+```
+# f) O que essas pipelines fazem? Execute ambas, analise os resultados e descreva cada uma. Qual é a diferença dos seus resultados?
+```{r}
+df |>
+  group_by(y, z) |>
+  summarize(mean_x = mean(x))
+```
+```{r}
+df |>
+  group_by(y, z) |>
+  mutate(mean_x = mean(x))
 ```
