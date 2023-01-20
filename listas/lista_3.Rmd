@@ -111,11 +111,13 @@ ggplot(
     color = "Carrier",
     shape = "Carrier"
   )
+## saving
+#ggsave("listas/distanceXtime_chart.png",
+#  width = 16,
+#  height = 16
+#)
 
-ggsave("listas/distanceXtime_chart.png",
-  width = 16,
-  height = 16
-)
+
 # https://www.datanovia.com/en/blog/ggplot-point-shapes-best-tips/
 # https://www.datanovia.com/en/blog/ggplot-colors-best-tricks-you-will-love/
 # https://cran.r-project.org/web/packages/ggsci/vignettes/ggsci.html
@@ -126,7 +128,15 @@ every_day_year_flight <- flights |>
   filter(year == 2013) |>
   group_by(month) |>
   summarize(
-    data = unique(day, na.rm = TRUE)
+    data = unique(day, na.rm = TRUE),
+  )
+every_day_year_flight
+```
+```{r}
+every_day_year_flight <- flights |>
+  distinct(day, month) %>%
+  summarize(
+    n = n() == 365,
   )
 every_day_year_flight
 ```
@@ -177,7 +187,7 @@ distance_max_mi
 library(ggsci)
 ggplot(
   data = flights,
-  mapping = aes(x = air_time , y = (arr_time - dep_time))
+  mapping = aes(x = air_time, y = (arr_time - dep_time))
 ) +
   geom_point() +
   scale_color_igv() +
@@ -185,6 +195,16 @@ ggplot(
   theme_minimal()
   # theme_dark() +
 
+```
+```{r}
+flights |>
+  mutate(
+    arr_time_min = 60*(arr_time %/% 100) + (arr_time %% 100),
+    dep_time_min = 60*(dep_time %/% 100) + (dep_time %% 100),
+    calc_air_time = arr_time_min - dep_time_min,
+    diff = air_time - calc_air_time,
+    .keep = "used"
+    )
 ```
 # 2. Compare `dep_time`, `sched_dep_time` e `dep_delay`. Como você espera que esses três números se relacionem?
 ```{r}
@@ -334,4 +354,8 @@ df |>
 df |>
   group_by(y, z) |>
   mutate(mean_x = mean(x))
+```
+```{r}
+library(rmarkdown)
+render("lista_3.Rmd")
 ```
