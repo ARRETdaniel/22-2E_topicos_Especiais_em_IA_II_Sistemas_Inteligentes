@@ -55,4 +55,3 @@ This project is **free to use** and does not contains any license.
 
 This code was presented for the Artificial intelligence II course in
 the Computer Science bachelor's degree @ UENF.
-Project development group: Daniel Terra, Gabriel Gravina, João Bosco,e  Paulo Júnior.
