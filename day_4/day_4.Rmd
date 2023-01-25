@@ -1,19 +1,116 @@
 ```{r}
-install.packages("nycflights13")
-```
-```{r}
-library(nycflights13)
 library(tidyverse)
 ```
 ```{r}
-nycflights13::flights
+billboard |>
+  pivot_longer(
+    cols = starts_with("wk"),
+    names_to = "week",
+    values_to = "rank"
+  )
+billboard
 ```
 ```{r}
-library(skimr)
+billboard |>
+  pivot_longer(
+    cols = starts_with("wk"),
+    names_to = "week",
+    values_to = "rank",
+    values_drop_na = TRUE
+  )
 ```
 ```{r}
-skim_without_charts(nycflights13::flights)
+billboard_tidy <- billboard |>
+  pivot_longer(
+    cols = starts_with("wk"),
+    names_to = "week",
+    values_to = "rank",
+    values_drop_na = TRUE
+  ) |>
+  mutate(
+    week = parse_number(week)
+  )
+billboard_tidy
 ```
 ```{r}
-?nycflights13::flights
+billboard_tidy <- billboard |>
+  pivot_longer(
+    cols = starts_with("wk"),
+    names_to = "week",
+    values_to = "rank",
+    values_drop_na = TRUE
+  ) |>
+  mutate(
+    week = parse_number(week)
+  )
+billboard_tidy
+```
+```{r}
+billboard_tidy |>
+  ggplot(aes(x = week, y = rank, group = track)) +
+  geom_line(alpha = 1 / 3) +
+  scale_y_reverse()
+```
+```{r}
+?billboard
+```
+```{r}
+billboard_tidy |>
+  ggplot(aes(x = week, y = rank, group = artist)) +
+  geom_line(alpha = 1 / 3) +
+  scale_y_reverse()
+```
+```{r}
+install.packages("tidyr")
+```
+```{r}
+install.packages("readr", dependencies = TRUE, repos = "http://cran.rstudio.com/")
+```
+```{r}
+library(tidyverse)
+```
+```{r}
+devtools::install_github("tidyverse/tidyr")
+```
+```{r}
+install.packages("remotes")
+remotes::install_github("tidyverse/tidyr")
+```
+```{r}
+suppressPackageStartupMessages(library("tidyverse"))
+```
+```{r}
+glimpse(who2)
+```
+```{r}
+household
+```
+```{r}
+?who2
+```
+```{r}
+install.packages("htmltools")
+```
+```{r}
+install.packages("Rtools")
+```
+```{r}
+install.packages("devtools")
+devtools::install_github("tidyverse/tidyr")
+```
+```{r}
+household |>
+  pivot_longer(
+    cols = !family,
+    names_to = c(".value", "child"),
+    names_sep = "_",
+    values_drop_na = TRUE
+  ) |>
+  mutate(
+    child = parse_number(child)
+  )
+```
+```{r}
+diamonds |>
+  count(clarity, color)
 ```
