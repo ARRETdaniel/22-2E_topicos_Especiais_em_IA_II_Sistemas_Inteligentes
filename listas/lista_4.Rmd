@@ -1,0 +1,109 @@
+```{r}
+library(tidyverse)
+```
+# 1. Descreva com palavras como as variáveis e observações são organizadas em cada um dos datasets `table1`, `table2`, `table3`, `table4a` e `table4b`
+# 1.1. `table1`
+```{r}
+?table1
+```
+```{r}
+1 + 88
+print("maria hello word")
+```
+# 1.2 `table2`
+```{r}
+table2
+?table2
+```
+# 1.3 `table3`
+```{r}
+table3
+```
+# 1.4 `table4a` + `table4b`
+```{r}
+table4a
+```
+```{r}
+table4b
+```
+# 2. Em aula nós calculamos o `rate` para a `table1`. Descreva com palavras e/ou pseudocódigo o processo que você faria para calcular `rate` das tabelas `table2` and `table4a` + `table4b.
+# 2.1 Escreva aqui seu processo para calcular o `rate` da 'table2'
+```{r}
+table2
+?table2
+```
+```{r}
+table2_tidy <- table2 |>
+  spread(key = type, value = count)
+table2_tidy
+# https://rstudio-education.github.io/tidyverse-cookbook/tidy.html
+```
+```{r}
+table2_rate <- table2_tidy |>
+  mutate(
+    rate = (cases / (population * 10000))
+  )
+table2_rate
+```
+# 2.2 Escreva aqui seu processo para calcular o `rate` da 'table4a' + `table4b`
+```{r}
+table4a
+```
+```{r}
+table4b
+```
+```{r}
+table4a_tidy <- table4a |>
+  gather(key = "year", value = "cases", 2:3)
+table4a_tidy
+```
+```{r}
+table4b_tidy <- table4b |>
+  gather(key = "year", value = "population", 2:3)
+table4b_tidy
+```
+```{r}
+table4a |>
+  gather(key = "year", value = "cases", "1999", "2000")
+  # gather(key = "year", value = "cases", -1)
+  # gather(key = "year", value = "cases", one_of(c("1999", "2000")))
+```
+```{r}
+table4_ab <- table4a_tidy |>
+  full_join(table4b_tidy)
+table4_ab
+# https://dplyr.tidyverse.org/articles/two-table.html
+```
+```{r}
+table4_ab_rate <- table4_ab |>
+  mutate(
+    rate = (cases / (population * 10000))
+  )
+table4_ab_rate
+```
+# 3. Em aula criamos um gráfico representando a mudança no número de casos ao longo do tempo por país. Recrie esse gráfico usando a `table2` ao invés da `table1`
+```{r}
+library(ggsci)
+
+ggplot(table2_rate, aes(x = year, y = cases)) +
+  geom_line(aes(group = country), color = "#181616") +
+  geom_point(aes(color = country, shape = country)) +
+  scale_color_igv() +
+  scale_fill_igv() +
+  theme_grey() +
+  scale_x_continuous(breaks = c(1999, 2000)) +
+  labs(
+    title = "Número de casos ao longo do tempo",
+    subtitle = "Afghanistan, Brazil, and China",
+    x = "Years",
+    y = "Cases",
+    color = "Countries",
+    shape = "Countries"
+  )
+```
+```{r}
+ggsave("listas/casos_ano.pdf",
+  width = 16,
+  height = 16
+)
+```
