@@ -94,7 +94,7 @@ ggplot(table2_rate, aes(x = year, y = cases)) +
   scale_x_continuous(breaks = c(1999, 2000)) +
   labs(
     title = "Número de casos ao longo do tempo",
-    subtitle = "Afghanistan, Brazil, and China",
+    subtitle = "Afghanistan, Brazil, and China - 1999 - 2000",
     x = "Years",
     y = "Cases",
     color = "Countries",
