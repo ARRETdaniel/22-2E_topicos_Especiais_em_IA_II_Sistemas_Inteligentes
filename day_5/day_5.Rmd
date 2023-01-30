@@ -1,0 +1,194 @@
+```{r}
+install.packages("janitor")
+install.packages("arrow")
+```
+```{r}
+library(janitor)
+library(arrow)
+library(tidyverse)
+```
+```{r}
+students <- read_csv("data/students.csv")
+students
+```
+```{r}
+students <- read_csv(url("https://docs.google.com/spreadsheets/d/e/2PACX-1vRC20txhLMBi4Y2pUX9MVm5q-9gTPP1NWR2dNXvMmfN3JcCVcjQa1Wb_wf0PvzMDjKaDGKvBEPmntXt/pub?gid=1453095989&single=true&output=csv"))
+
+# How to remove all rows having NA in R?
+# https://www.tutorialspoint.com/how-to-remove-all-rows-having-na-in-r
+```
+```{r}
+students, na = c("N/A", "")
+
+# Data Cleaning: A guide to dealing with NA values
+# https://www.linkedin.com/pulse/data-cleaning-guide-dealing-na-values-karan-rajwanshi/
+```
+```{r}
+students
+na.omit(students)
+```
+```{r}
+students <- read_csv(url("https://docs.google.com/spreadsheets/d/e/2PACX-1vRC20txhLMBi4Y2pUX9MVm5q-9gTPP1NWR2dNXvMmfN3JcCVcjQa1Wb_wf0PvzMDjKaDGKvBEPmntXt/pub?gid=1453095989&single=true&output=csv"))
+
+```
+
+```{r}
+students |> janitor::clean_names()
+```
+```{r}
+students |>
+  janitor::clean_names() |>
+  mutate(
+    meal_plan = factor(meal_plan)
+  )
+```
+```{r}
+students <- students |>
+  janitor::clean_names() |>
+  mutate(
+    meal_plan = factor(meal_plan),
+    age = parse_number(if_else(age == "five", "5", age))
+  )
+```
+```{r}
+read_csv(
+  "a,b,c
+  1,2,3
+  4,5,6"
+)
+```
+```{r}
+read_csv(
+  "The first line of metadata
+  The second line of metadata
+  x,y,z
+  1,2,3",
+  skip = 2
+)
+```
+```{r}
+read_csv(
+  "1,2,3
+  4,5,6",
+  col_names = FALSE
+)
+read_csv(
+  "1,2,3
+  4,5,6",
+  col_names = c("x", "y", "z")
+)
+```
+# #######
+```{r}
+csv <- "
+  x
+  10
+  .
+  20
+  30"
+
+df <- read_csv(csv)
+```
+```{r}
+read_csv(
+  "x,y,z
+  1,2,3",
+  col_types = cols_only(x = col_character())
+)
+```
+
+# files
+
+```{r}
+sales_files <- c("data/01-sales.csv", "data/02-sales.csv", "data/03-sales.csv")
+read_csv(sales_files, id = "file")
+```
+
+# saving files
+
+# https://sparkbyexamples.com/r-programming/r-export-csv-using-write-csv/
+
+```{r}
+write_csv(students, "day_5/students-2.csv")
+
+```
+```{r}
+read_csv("day_5/students-2.csv")
+```
+
+# Replacing values with NA
+### How To Replace Values Using `replace()` and `is.na()` in R
+## Replace Particular Value in Data Frame in R (2 Examples)
+
+## https://www.digitalocean.com/community/tutorials/replace-in-r
+## https://statisticsglobe.com/replace-particular-value-in-data-frame-in-r
+
+
+```{r}
+students <- read_csv(url("https://docs.google.com/spreadsheets/d/e/2PACX-1vRC20txhLMBi4Y2pUX9MVm5q-9gTPP1NWR2dNXvMmfN3JcCVcjQa1Wb_wf0PvzMDjKaDGKvBEPmntXt/pub?gid=1453095989&single=true&output=csv"))
+```
+```{r}
+install.packages("naniar")
+students
+```
+```{r}
+library(naniar)
+
+students
+```
+```{r}
+# write out all the offending strings
+na_strings <- c(".","NA", "N A", "N / A", "N/A", "N/ A", "Not Available", "NOt available")
+```
+```{r}
+students <- students %>%
+  replace_with_na_all(condition = ~ .x %in% na_strings)
+# https://cran.r-project.org/web/packages/naniar/vignettes/replace-with-na.html
+```
+```{r}
+students
+```
+```{r}
+problems(students)
+```
+```{r}
+studentss <- students %>%
+  as.numeric(c("five" = 5)[students])
+studentss
+```
+```{r}
+studentss <- students %>%
+  str_replace_all(c("five" = 5))
+studentss
+```
+```{r}
+students[students == "five"] <- "5"
+students
+```
+```{r}
+students |> janitor::clean_names()
+```
+```{r}
+students <- students |>
+  janitor::clean_names() |>
+  mutate(
+    meal_plan = factor(meal_plan),
+    age = parse_number(if_else(age == "five", "5", age))
+  )
+students
+```
+```{r}
+students |>
+  janitor::clean_names() |>
+  mutate(
+    meal_plan = factor(meal_plan)
+  )
+```
+
+
+# Prquet
+
+```{r}
+write_parquet(students, "day_5/students.parquet")
+read_parquet("day_5/students.parquet")
+```
