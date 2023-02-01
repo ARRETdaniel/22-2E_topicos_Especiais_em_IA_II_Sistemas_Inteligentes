@@ -1,0 +1,10 @@
+color|weight
+red|6
+green|1
+blue|5
+cyan|3
+yellow|2
+purple|7
+pink|4
+brown|8
+gold|9

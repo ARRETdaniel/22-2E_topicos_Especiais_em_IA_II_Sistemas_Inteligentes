@@ -1,0 +1,88 @@
+```{r}
+install.packages("janitor")
+install.packages("arrow")
+```
+```{r}
+library(janitor)
+library(arrow)
+library(tidyverse)
+```
+
+```{r}
+data <- read.table("listas/data.txt",
+  sep = "|",
+  header = TRUE
+)
+data
+# https://www.educative.io/answers/how-to-read-delimited-data-files-in-r
+```
+```{r}
+read_csv("a,b,c\n1,2,3\n4,5,6")
+```
+```{r}
+read_csv("a,b,c,d\n1,2, 3,NA\n1,2,3,4")
+```
+```{r}
+read_csv("a,b\n1,2")
+```
+```{r}
+read_csv("num,chr\n1,a\n1,b")
+```
+```{r}
+read_csv("a,b\n1,3")
+```
+
+```{r}
+annoying <- tibble(
+  `1` = 1:10,
+  `2` = `1` * 2 + rnorm(length(`1`))
+)
+```
+```{r}
+annoying
+```
+```{r}
+annoying_cleaning <- annoying |>
+  janitor::clean_names()
+```
+```{r}
+annoying_cleaning
+```
+```{r}
+annoying_cleaning_extrair1 <- annoying_cleaning |>
+  filter(x1 == 1)
+annoying_cleaning_extrair1
+```
+```{r}
+annoying_cleaning
+```
+```{r}
+annoying_cleaning |>
+  ggplot(aes(x = x1, y = x2)) +
+  geom_line(alpha = 1)
+```
+```{r}
+annoy <- annoying_cleaning |>
+  mutate(
+    `3` = x1 / x2
+  )
+annoy
+```
+```{r}
+annoy
+```
+```{r}
+install.packages("data.table")
+library("data.table")
+```
+```{r}
+setnames(annoy, new = c("one", "two", "three"),
+         old = c("x1", "x2", "3"))
+```
+```{r}
+setnames(annoy, new = c("five"),
+         old = c("three"))
+```
+```{r}
+annoy
+```
