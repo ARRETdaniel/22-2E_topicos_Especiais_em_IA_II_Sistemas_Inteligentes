@@ -189,6 +189,6 @@ students |>
 # Prquet
 
 ```{r}
-write_parquet(students, "day_5/students.parquet")
+write_parquet(students, "projectDataParquet/students.parquet")
 read_parquet("day_5/students.parquet")
 ```
