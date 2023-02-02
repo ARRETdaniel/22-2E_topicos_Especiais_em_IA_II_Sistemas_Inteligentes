@@ -10,12 +10,7 @@ output:
 # 1. Definição do problema.
 Quais são algumas tendências no uso de dispositivos inteligentes?
 
-Os dados que iremos usar para responder essa pergunta eh o FitBit Fitness Tracker Data(License CC0: Public Domain, disponível através do Mobius distribuído através do Amazon Mechanical Turk entre 12 de março de 2016 e 12 de maio de 2016.)
-Este conjunto de dados contém rastreamento de atividade física pessoal para 33 usuários do Fitbit. Esses usuários qualificados do Fitbit concordaram com o envio de dados de rastreamento pessoal, incluindo minutos de desempenho de condicionamento físico, frequência cardíaca e monitoramento do sono.
-
-iremos buscar tendencias no uso dos dispositivos inteligentes pelos os usuarios.
-De modo entender e identificar possiveis
-coleracoes e assim propor possiveis hypothesis.
+A partir dos Dados da FitBit Fitness Tracker Data
 
 # Salving PDF
 ```{r}
@@ -24,7 +19,7 @@ coleracoes e assim propor possiveis hypothesis.
 # Type export and select below
 rmarkdown::pandoc_available()
 library(knitr)
-pandoc("projectFinal/test.md", format = "latex")
+pandoc("projectFinal/finalProject.Rmd", format = "pdf")
 ```
 ```{r}
 install.packages("tinytex")
@@ -206,6 +201,7 @@ hourly_intensities_file$day <- format(hourly_intensities_file$activity_hour, for
 hourly_intensities_file$calories <- cbind(hourly_calories_file$calories)
 glimpse(hourly_intensities_file)
 ```
+
 ```{r}
 
 hourly_intensities_file |>
