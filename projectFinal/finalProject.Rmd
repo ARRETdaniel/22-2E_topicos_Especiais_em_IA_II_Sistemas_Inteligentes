@@ -224,3 +224,22 @@ hourly_intensities_file |>
   )
 ```
 Now we can notice a Very High Correlation; 0.9. When one variable changes, the other variable changes in the same direction.
+```{r}
+glimpse(sleep_day_file)
+glimpse(daily_activity_file)
+glimpse(daily_intensities_file)
+glimpse(hourly_intensities_file)
+glimpse(hourly_calories_file)
+```
+```{r}
+sleep_day_file$weekday <- weekdays(sleep_day)
+sleep_day_file$weekday <- factor(sleep_day$weekday, levels = c(
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday"
+))
+```
