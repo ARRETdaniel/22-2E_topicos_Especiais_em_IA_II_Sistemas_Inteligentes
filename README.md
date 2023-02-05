@@ -32,7 +32,7 @@ Run **file.Rmd**'s Chunk.
 
 #### Aulas
 
-- [day_*]()
+- [day_*](https://github.com/ARRETdaniel/22-2E_topicos_Especiais_em_IA_II_Sistemas_Inteligentes)
 
 #### Atividades
 
