@@ -32,7 +32,7 @@ Run **file.Rmd**'s Chunk.
 
 #### Aulas
 
-- [day_1](day_1)
+- [day_*]()
 
 #### Atividades
 
