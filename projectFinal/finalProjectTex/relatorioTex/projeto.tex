@@ -1,0 +1,876 @@
+% ----------------------------------------------------------
+
+
+\chapter[Fundamentação Teórica]{Fundamentação Teórica}\label{Fundamentacao}
+\begin{enumerate}
+   \item  Como contribuição teórica inicial para o nosso projeto, temos o material do canal no Youtube 'Python Engineer' a playlist de vídeo aulas,  'Chat Bot With PyTorch - NLP Beginner Tutorial' \footnote{\url{https://www.youtube.com/playlist?list=PLqnslRFeH2UrFW4AUgn-eY37qOAWQpJyg}}. A partir desse conteúdo poderemos dar início aos nossos desenvolvimentos e pesquisas. No tutorial, é desenvolvido um chatbot simples usando PyTorch e Deep Learning. Também fornecendo uma introdução a algumas técnicas básicas de Processamento de Linguagem Natural (PLN).
+
+   \item Seguiremos, também, os conteúdos já aprendidos nas aulas de  'Inteligência Artifical 2022/2 - UENF' para nos auxiliar na formulação teórica do nosso projeto.
+
+   \item  Salientamos que com o decorrer do projeto nossas referências de materiais, para esse projeto, tenderá a aumentar devido a novas descobertas.
+\end{enumerate}
+
+
+
+
+
+
+
+\chapter[Metodologia]{Metodologia}
+
+Baseado no “Project-based learning” \cite{krajcik2006project}. Seguiremos os estudos através de um projeto que aborda problemas do mundo real, cujo muitos não tem resposta única. Ao longo desse projeto será possível fazer novas perguntas e encontrar suas possíveis respostas por meio de uma investigação sustentada.
+
+\justifying
+\vspace {1mm}
+
+Este Plano de Pesquisa também utilizará as seguintes metodologias:
+\begin{itemize}
+   \item \textit{Pesquisa Exploratória; visando promover o enriquecimento do conhecimento sobre os diferentes assuntos relacionados a IA, ML, e Chatbots:
+         }
+         \begin{itemize}
+            \item \textit{Levantamento Bibliográfico;}
+            \item \textit{Levantamento documental;}
+            \item \textit{Minicursos e Vídeo aulas;}
+            \item \textit{Obtenção de experiências.}
+         \end{itemize}
+\end{itemize}
+
+\chapter[Construindo um Chatbot]{Construindo um Chatbot}
+
+Já pensou em como Alexa, Siri ou assistente de voz do Google funcionavam? Neste capítulo daremos início à construção de um chatbot para interação com usuários de uma loja virtual.
+
+Antes de continuar, abaixo encontra-se a lista de requisitos para o nosso projeto:
+\justifying
+\begin{itemize}
+   \item \textit{Python 3}
+         \begin{itemize}
+            \item \textit{Define: Python} é uma linguagem de programação interpretada, orientada a objetos e de alto nível com semântica dinâmica. Suas estruturas de dados embutidas de alto nível, combinadas com tipagem dinâmica e vinculação dinâmica, o tornam muito atraente para o Desenvolvimento Rápido de Aplicativos e para uso como uma linguagem de script ou cola para conectar componentes existentes \footnote{\url{https://www.python.org/doc/essays/blurb/}}.
+         \end{itemize}
+
+   \item \textit{Dictionaries e Lists}
+         \begin{itemize}
+            \item \textit{Define: Listas} são tipos de dados mutáveis em Python. Lists é um tipo de dados de índice baseado em 0, o que significa que o índice do primeiro elemento começa em 0. As listas são usadas para armazenar vários itens em uma única variável. As listas são um dos 4 tipos de dados do Python, ou seja, Listas, Dicionário, Tupla e Conjunto \footnote{\url{https://www.analyticsvidhya.com/blog/2021/06/working-with-lists-dictionaries-in-python/}}.
+            \item \textit{Define: Dicionários} Dicionários são a implementação do Python de uma estrutura de dados que é mais conhecida como uma matriz associativa. Um dicionário consiste em uma coleção de pares chave-valor. Cada par de chave-valor mapeia a chave para seu valor associado\footnote{\url{https://realpython.com/python-dicts}}.
+         \end{itemize}
+
+   \item \textit{NumPy}
+         \begin{itemize}
+            \item \textit{Define: NumPy} é o pacote fundamental para computação científica em Python. É uma biblioteca Python que fornece um objeto array multidimensional, vários objetos derivados (como arrays e matrizes mascarados) e uma variedade de rotinas para operações rápidas em arrays, incluindo matemática, lógica, manipulação de formas, classificação, seleção, E/S , Fourier discreto transforma álgebra linear básica, operações estatísticas básicas, simulação aleatória e muito mais\footnote{\url{https://numpy.org/doc/stable/user/whatisnumpy.html}}.
+         \end{itemize}
+
+   \item \textit{Pandas}
+         \begin{itemize}
+            \item \textit{Define: Pandas} é um pacote Python de código aberto que é mais amplamente usado para ciência de dados/análise de dados e tarefas de aprendizado de máquina. Ele é construído em cima de outro pacote chamado Numpy, que fornece suporte para arrays multidimensionais\footnote{\url{https://www.activestate.com/resources/quick-reads/what-is-pandas-in-python-everything-you-need-to-know/}}.
+         \end{itemize}
+
+   \item \textit{Pytorch}
+         \begin{itemize}
+            \item \textit{Define: PyTorch} é uma biblioteca de aprendizado de máquina para Python usada principalmente para processamento de linguagem natural. O software de código aberto foi desenvolvido pelas equipes de inteligência artificial do Facebook Inc. em 2016. O PyTorch oferece dois recursos significativos, incluindo computação de tensor, bem como redes neurais profundas funcionais\footnote{\url{https://deepai.org/machine-learning-glossary-and-terms/pytorch}}.
+         \end{itemize}
+
+   \item \textit{Natural Language Processing (Bag of Words)}
+         \begin{itemize}
+            \item \textit{Define: NLP ou PLN }O processamento de linguagem natural usa aprendizado de máquina para revelar a estrutura e o significado do texto. Com aplicativos de processamento de linguagem natural, as organizações podem analisar texto e extrair informações sobre pessoas, lugares e eventos para entender melhor o sentimento da mídia social e as conversas com os clientes \footnote{\url{https://cloud.google.com/learn/what-is-natural-language-processing}}.
+         \end{itemize}
+
+
+\end{itemize}
+
+\section[PEAS do Chatbot]{PEAS do Chatbot}
+
+Antes de começarmos com o desenvolvimento em si. É de extrema importância definir o ambiente de tarefas para o nosso agente inteligente. Assim, com o uso do PEAS seremos capazes de representar e definir o modelo de Inteligência Artificial a ser desenvolvido. Desse modo, fazendo um
+paralelo entre os conhecimentos adquiridos durante a disciplina de Inteligência Artificial.
+O sistema PEAS nos fornecera a Medida de Desempenho em relação ao Ambiente, Atuadores e Sensores do respectivo agente que iremos trabalhar.
+
+A sigla PEAS significa: Medida de Desempenho, Ambiente, Atuador, Sensor \footnote{\url{https://www.geeksforgeeks.org/understanding-peas-in-artificial-intelligence/}}.
+\begin{itemize}
+
+   \item \textit{Medida de desempenho:} A medida de desempenho é a unidade para definir o sucesso de um agente. O desempenho varia com os agentes com base em seus diferentes preceitos.
+
+
+   \item \textit{Ambiente:} Ambiente é o entorno de um agente a cada instante. Ele continua mudando com o tempo se o agente estiver em movimento.
+
+         Existem 5 tipos principais de ambientes:
+         \begin{itemize}
+            \item Totalmente observável e parcialmente observável
+            \item Episódico e Sequencial
+            \item Estático e dinâmico
+            \item Discreto e Contínuo
+            \item Determinístico e estocástico
+
+         \end{itemize}
+
+
+
+   \item \textit{Atuador:} Um atuador é uma parte do agente que entrega a saída da ação ao ambiente.
+   \item \textit{Sensor:} Sensores são as partes receptivas de um agente que recebe a entrada para o agente.
+\end{itemize}
+
+\subsection[Modelo PEAS do Chatbot]{Modelo PEAS do Chatbot}
+
+Agora trazendo para o nosso projeto. Podemos fazer as seguintes definições:
+
+\begin{itemize}
+   \item \textit{Medida de desempenho:}
+         \begin{itemize}
+            \item Taxa de retenção (duração da conversa)
+            \item Usuários ativos (quantidades de usuários que utilizam o chat)
+            \item Custo por atendimento (redução de custo com call center)
+            \item Taxa de satisfação pós-atendimento
+            \item Número de erros
+
+         \end{itemize}
+   \item \textit{Ambiente:}
+         \begin{itemize}
+            \item Mensagens de um usuário através do chat
+            \item O site onde o chat foi alocado (info de produtos, call center, etc)
+
+         \end{itemize}
+   \item \textit{Atuadores:}
+         \begin{itemize}
+            \item Mensagens pelo chat
+            \item Sugestões
+            \item Encaminhamentos
+            \item Exibir produto/oferta
+
+         \end{itemize}
+   \item \textit{Sensores:}
+         \begin{itemize}
+            \item Mensagens de texto recebidas no Chat
+            \item Interpretador NLP
+
+         \end{itemize}
+
+\end{itemize}
+\subsection[Propriedades do Ambiente de Tarefas]{Propriedades do Ambiente de Tarefas}
+Após o desenvolvimento do PEAS, também é necessário especificar as propriedades do ambiente de tarefas em termos de seis principais fatores encontrados na tabela abaixo, ela também dirá se o ChatBot se encaixa ou não nessas especificações:
+
+\begin{figure}[H]
+   \begin{center}
+      \includegraphics[width=10cm]{img/propri.png}
+      \caption{Propriedades do Ambiente de Tarefas} \label{propri}
+   \end{center}
+\end{figure}
+
+\begin{itemize}
+   \item \textit{Completamente observável:} O ambiente é completamente observável, pois a única coisa que influencia as ações do ChatBot são as mensagens de texto recebidas do usuário.
+
+   \item \textit{Determinístico:} Ele não é determinístico porque as ações são determinadas pelas mensagens enviadas do usuário, e não há como prever que tipo de mensagem será enviada.
+
+   \item \textit{Episódico:} É completamente episódico, já que cada ação do ChatBot depende de uma mensagem enviada pelo usuário, sempre vindo a ação após a mensagem recebida.
+
+   \item \textit{Estático:} O ambiente muda de acordo com as mensagens enviadas do usuário, logo é dinâmico. O agente age de acordo com a demanda de mensagens.
+
+   \item \textit{Discreto:} É claramente discreto visto que há uma ação para cada percepção de mensagem recebida do usuário.
+
+   \item \textit{Agente único:} E podemos concluir que é único visto que há apenas um agente respondendo mensagens no chat, sem a influência de outros agentes.
+
+
+\end{itemize}
+
+Para concluir, podemos verificar os modelos mais simples de Agente Inteligente que temos e verificar em qual deles o ChatBot se encaixaria melhor. Os modelos conhecidos são: reativo simples, reativo baseado em modelo, baseados em objetivo e baseados na utilidade.
+Visto que o ChatBot funciona de acordo com uma base de conhecimento pré determinada e responde de acordo com a mensagem recebida e analisada do usuário, ele se encaixa melhor no modelo de agente reativo baseado em modelo.
+
+\begin{figure}[H]
+   \begin{center}
+      \includegraphics[width=10cm]{img/reativo.png}
+      \caption{PEAS Agente reativo baseado em modelo} \label{reativo}
+   \end{center}
+\end{figure}
+
+\begin{figure}[H]
+   \begin{center}
+      \includegraphics[width=12cm]{img/reativo2.png}
+      \caption{Função Agente reativo baseado em modelo} \label{reativo2}
+   \end{center}
+\end{figure}
+
+
+\section[Importando Bibliotecas Relevantes]{Importando Bibliotecas Relevantes}
+\begin{lstlisting}[language=Python, caption=Python Bibliotecas]
+
+         import numpy as np
+         import random
+         import json
+         import nltk
+         import torch
+         import torch.nn as nn
+   from torch.utils.data import Dataset, DataLoader
+\end{lstlisting}
+
+\section[Criando funções personalizadas]{Criando funções personalizadas}
+Criaremos funções personalizadas para que seja fácil implementá-las posteriormente.
+\justifying
+\begin{lstlisting}[language=Python, caption=Python Funções personalizadas]
+def tokenize(sentence):
+    return nltk.word_tokenize(sentence)
+
+def stem(word):
+    return stemmer.stem(word.lower())
+
+\end{lstlisting}
+Nltk ou kit de ferramentas de linguagem natural é uma biblioteca realmente útil que contém classes importantes que serão úteis em qualquer uma de suas tarefas de PNL.
+\justifying
+\section[Stemming]{Stemming}
+
+
+Se tivermos as seguintes palavras como Andei, Ande, Andarei, Andamento, Andando, Andante, podem parecer palavras diferentes, mas geralmente têm o mesmo significado e também a mesma forma base; "and".
+O processo de stemização (do inglês, stemming) consiste em reduzir uma palavra ao seu radical. A palavra “meninas” se reduziria a “menin”, assim como “meninos” e “menininhos”. As palavras “gato”, “gata”, “gatos” e “gatas” reduziriam-se para “gat” \footnote{\url{https://www.computersciencemaster.com.br/como-reduzir-uma-palavra-ao-seu-radical-em-python-stemming/}}.
+Então, para que nosso modelo entenda todas as formas diferentes das mesmas palavras, precisamos treinar nosso modelo com essa forma. Isso é chamado de Stemming. Existem diferentes métodos que podemos usar para derivação. Aqui usaremos o modelo Porter Stemmer da nossa biblioteca NLTK.
+\justifying
+\begin{lstlisting}[language=Python, caption=Python Stemming]
+from nltk.stem.porter import PorterStemmer
+stemmer = PorterStemmer()
+\end{lstlisting}
+
+\section[Bag of Words]{Bag of Words}
+Vamos dividir cada palavra em frases e adicioná-la a um array. Nós estaremos usando um saco de palavras. Que inicialmente será uma lista de zeros com um tamanho igual ao comprimento do array all-words. Se tivermos um array de ` frases = ["ola", "como", "voce", "esta"]` e um array de total ` words = ["oi", "olá", "eu", "você, "tchau", "obrigado", "legal"]` então seu conjunto de palavras será `bog = [ 0 , 1 , 0 , 1 , 0 , 0 , 0]`. Faremos um loop sobre cada palavra no array all-words e o array bog correspondente a cada palavra. Se uma palavra da frase for encontrada no array all words, 1 será substituído naquele índice/posição no array bag.
+\justifying
+
+
+\begin{figure}[H]
+   \begin{center}
+      \includegraphics[width=15cm]{img/bagofwords.png}
+      \caption{Bag of Words} \label{BagofWords}
+      \medskip
+      \small
+      Usa Bag of Words para separar uma frase em várias palavras. Imagem retirada da Fundamentação Teórica \ref{Fundamentacao}.
+   \end{center}
+\end{figure}
+
+
+\begin{lstlisting}[language=Python, caption=Python Bag of Words]
+def bag_of_words(tokenized_sentence, words):
+    """
+    return bag of words array:
+    1 para cada palavra conhecida que existe na frase,
+    0 caso contrario.
+
+
+    Exem,plo:
+
+
+    sentence = ["ola", "como", "esta", "voce"]
+    words = ["oi", "ola", "eu", "voce", "tchau",
+     "obrigado", "legal"]
+    bag   = [  0 ,    1 ,    0 ,   1 ,    0 ,    0 ,      0]
+    """
+    # stem cada palavra
+    sentence_words = [stem(word) for word in tokenized_sentence]
+    # initialize bag com 0 para cada palavra
+    bag = np.zeros(len(words), dtype=np.float32)
+    for idx, w in enumerate(words):
+        if w in sentence_words:
+            bag[idx] = 1
+
+    return bag
+
+\end{lstlisting}
+
+Durante o processo, também usaremos \textbf{nltkwordtokenize()} que converterá uma única string de sentença em uma lista de palavras. Por exemplo, se você passar \textbf{"Ola, como voce esta?"}, ele retornará \textbf{"ola", "como", "voce", "esta"}.
+\textbf{Observação:} Passaremos palavras em minúsculas para o \textbf{Stemmer} para que palavras como Bom e bom (em maiúsculas) não sejam rotuladas como palavras diferentes.
+
+\section[Carregando os dados e Data Cleaning]{Carregando os dados e Data Cleaning}
+Usaremos um conjunto de dados chamado  \textbf{intents.json} que tem a estrutura mostrada no campo abaixo. Estaremos limpando esses dados de acordo com as nossas necessidades usando as funções que criamos anteriormente.
+
+\begin{lstlisting}[language=python, caption=Data intents.json]
+{
+  "intents": [
+    {
+      "tag": "saudacao",
+      "patterns": [
+        "Oi",
+        "Ei",
+        "Como voce esta",
+        "Tem alguem ai?",
+        "Ola",
+        "Bom dia"
+      ],
+      "responses": [
+        "Ei :-)",
+        "Ola, obrigado pela visita",
+        "Ola, o que posso fazer por voce?",
+        "Ola, como posso ajudar?"
+      ]
+   }
+  ]
+}
+
+
+\end{lstlisting}
+Agora vamos simplesmente carregar o arquivo json usando a função \textbf{jsonload}.
+
+\begin{lstlisting}[language=Python, caption=Python Carregando dados]
+with open('intents.json', 'r') as f:
+    intents = json.load(f)
+\end{lstlisting}
+
+Para obter as informações corretas, iremos descompactá-las com o seguinte código:
+
+\begin{lstlisting}[language=Python, caption=Python Loop nos dados]
+all_words = []
+tags = []
+xy = []
+# loop atraves de cada frase no nosso intents patterns
+for intent in intents['intents']:
+    tag = intent['tag']
+    # adicionar a tag list
+    tags.append(tag)
+    for pattern in intent['patterns']:
+        # tokenize cada palavra na frase
+        w = tokenize(pattern)
+        # adicionar a nossa lista de palavras
+        all_words.extend(w)
+        # adicionar ao par xy
+        xy.append((w, tag))
+
+\end{lstlisting}
+Isso separará todas as tags e palavras em suas listas.
+
+\section[Limpeza e preparação dos dados]{Limpeza e preparação dos dados}
+
+
+Estaremos usando nossas funções personalizadas e limpando os dados implementando as funções que criamos em nossas células anteriores.
+
+\begin{lstlisting}[language=Python, caption=Data Cleaning]
+
+# stem e lower cada palavra
+ignore_words = ['?', '.', '!']
+all_words = [stem(w) for w in all_words if w not in ignore_words]
+# remover duplicados e sort
+all_words = sorted(set(all_words))
+tags = sorted(set(tags))
+
+print(len(xy), "patterns") # padroes
+print(len(tags), "tags:", tags) # tags
+print(len(all_words), "unique stemmed words:", all_words) # palavras derivadas unicas
+
+\end{lstlisting}
+
+Criando dados de treinamento: transformaremos os dados em um formato que nosso modelo PyTorch possa entender facilmente
+
+\begin{lstlisting}[language=Python, caption=Training Data]
+
+# criar dados de treinamento
+X_train = []
+y_train = []
+for (pattern_sentence, tag) in xy:
+    # X: bag de palavras para cada pattern_sentence
+    bag = bag_of_words(pattern_sentence, all_words)
+    X_train.append(bag)
+    # y: PyTorch CrossEntropyLoss precisa apenas class labels, nao one-hot
+    label = tags.index(tag)
+    y_train.append(label)
+
+X_train = np.array(X_train)
+y_train = np.array(y_train)
+
+\end{lstlisting}
+
+\section[Modelo PyTorch]{Modelo PyTorch}
+
+Aqui estaremos fazendo uma classe para implementar nossa rede neural personalizada. Será uma Rede neural feed-forward que terá 3 Camadas Lineares e usaremos a função de ativação “ReLU”. Nota: Usamos a função super() para herdar as propriedades de sua classe pai. Este é um conceito de Programação Orientada a Objetos (OOP).
+
+\begin{itemize}
+   \item \textit{Define: ReLU} é uma função de ativação não linear que é usada em redes neurais multicamadas ou redes neurais profundas. Esta função pode ser representada como:
+
+         \begin{figure}[H]
+            \begin{center}
+               \includegraphics[width=10cm]{img/relu.jpg}
+               \caption{ReLu} \label{ReLu}
+               \medskip
+               \small
+               onde x = um valor de entrada.
+            \end{center}
+         \end{figure}
+
+         De acordo com a equação 1, a saída de ReLu é o valor máximo entre zero e o valor de entrada. A saída é igual a zero quando o valor de entrada é negativo e o valor de entrada quando a entrada é positiva. Assim, podemos reescrever a equação 1 da seguinte forma:
+
+         \begin{figure}[H]
+            \begin{center}
+               \includegraphics[width=10cm]{img/relu2.jpg}
+               \caption{ReLu} \label{ReLu2}
+               \medskip
+               \small
+               onde x = um valor de entrada.
+            \end{center}
+         \end{figure}
+
+
+         Exemplos de ReLu: Dadas diferentes entradas, a função gera diferentes saídas. Por exemplo, quando x é igual a -5, a saída de f(-5) é 0. Por outro lado, a saída de f(0) é 0 porque a entrada é maior ou igual a 0. Além disso, o resultado de f (5) é 5 porque a entrada é maior que zero \footnote{\url{https://deepai.org/machine-learning-glossary-and-terms/relu/}}.
+\end{itemize}
+
+\subsection[Feed Forward Neural Network]{Feed Forward Neural Network}
+
+\textit{Define: Feed Forward Neural Network} Uma Rede Neural Feed Forward é uma rede neural artificial na qual as conexões entre os nós não formam um ciclo. O oposto de uma rede neural feed-forward é uma rede neural recorrente, na qual certos caminhos são ciclados. O modelo feed-forward é a forma mais simples de uma rede neural, pois a informação é processada apenas em uma direção. Embora os dados possam passar por vários nós ocultos, eles sempre se movem em uma direção e nunca para trás \footnote{\url{https://deepai.org/machine-learning-glossary-and-terms/feed-forward-neural-network}}.
+
+
+\begin{figure}[H]
+   \begin{center}
+      \includegraphics[width=10cm]{img/ffnn.png}
+      \caption{Feed Forward Neural Network} \label{ffnn}
+      \medskip
+      \small
+      Exemplo de uma rede neural feed-forward.
+   \end{center}
+\end{figure}
+
+Desse modo, uma representação válida para o nosso projeto seria a FFNN abaixo:
+\begin{figure}[H]
+   \begin{center}
+      \includegraphics[width=10cm]{img/ffnn2.png}
+      \caption{Feed Forward Neural Network} \label{ffnn2}
+      \medskip
+      \small
+      Exemplo de uma rede neural feed-forward para o nosso projeto. Imagem retirada da Fundamentação Teórica \ref{Fundamentacao}.
+   \end{center}
+\end{figure}
+
+\subsection[Função de ativação]{Função de ativação}
+
+\textit{Define: Função de ativação} Uma função de ativação é uma função usada em redes neurais artificiais que produz um valor pequeno para entradas pequenas e um valor maior se suas entradas excederem um limite. Se as entradas forem grandes o suficiente, a função de ativação "dispara", caso contrário não faz nada. Em outras palavras, uma função de ativação é como um portão que verifica se um valor de entrada é maior que um número crítico.
+
+As funções de ativação são úteis porque adicionam não linearidades às redes neurais, permitindo que as redes neurais aprendam operações poderosas. Se as funções de ativação fossem removidas de uma rede neural feedforward, toda a rede poderia ser refatorada para uma simples operação linear ou transformação de matriz em sua entrada e não seria mais capaz de realizar tarefas complexas, como reconhecimento de imagem \footnote{\url{https://towardsdatascience.com/activation-functions-neural-networks-1cbd9f8d91d6}}.
+
+\subsubsection[Função ReLU]{Função ReLU}
+Atualmente, existem várias funções de ativação amplamente usadas no aprendizado profundo. Uma das mais simples é a ReLU (Rectified Linear Unit) Activation Function, ou função ReLU, que é uma função linear por partes que produz zero se sua entrada for negativa, e diretamente a saída caso contrário.
+Como mencionado, O ReLU é a função de ativação mais usada no mundo atualmente. Já que é usado em quase todas as redes neurais convolucionais ou deep learning.
+
+\begin{figure}[H]
+   \begin{center}
+      \includegraphics[width=10cm]{img/relu.png}
+      \caption{Logistic Sigmoid v/s ReLU} \label{relu}
+   \end{center}
+\end{figure}
+Como você pode identificar, o ReLU está meio retificado (de baixo). f(z) é zero quando z é menor que zero e f(z) é igual a z quando z é maior ou igual a zero.
+
+Range: [ 0 ao infinito)
+
+A função e sua derivada são monotônicas.
+
+Mas o problema é que todos os valores negativos se tornam zero imediatamente, o que diminui a capacidade do modelo de ajustar ou treinar a partir dos dados corretamente. Isso significa que qualquer entrada negativa dada à função de ativação ReLU transforma o valor em zero imediatamente no gráfico, o que, por sua vez, afeta o gráfico resultante por não mapear os valores negativos adequadamente\footnote{\url{https://towardsdatascience.com/activation-functions-neural-networks-1cbd9f8d91d6}}.
+
+\subsubsection[Derivada da Função ReLU]{Derivada da Função ReLU}
+
+Em redes neurais, uma função de ativação agora comumente usada é a unidade linear retificada, ou como comumente abreviada, ReLU. O ReLU é definido como,
+
+\begin{figure}[H]
+   \begin{center}
+      \includegraphics[width=10cm]{img/relu2.png}
+      \caption{A representação matemática da função ReLU} \label{relu2}
+   \end{center}
+\end{figure}
+
+O que essa função faz? Basicamente, ele define qualquer coisa menor ou igual a 0 (números negativos) como 0. E mantém todos os mesmos valores para quaisquer valores > 0 \footnote{\url{https://kawahara.ca/what-is-the-derivative-of-relu/}}.
+
+Também é instrutivo calcular o gradiente da função ReLU, que é matematicamente indefinida em x = 0, mas que ainda é extremamente útil em redes neurais.
+
+A derivada da função ReLU. Na prática, a derivada em x = 0 pode ser definida como 0 ou 1.
+A derivada zero para x negativo pode dar origem a problemas ao treinar uma rede neural,
+pois um neurônio pode ficar 'preso' na região zero e a retropropagação (backpropagation) nunca mudará seus pesos.
+Em outras palavras, digamos que tenhamos entrada menor que 0, então a saída é zero e a rede neural não pode continuar o algoritmo de retropropagação. Esse problema é comumente conhecido como Dying ReLU. Para nos livrarmos desse problema, usamos uma versão improvisada do ReLU, chamada Leaky ReLU (Cujo nao cobrimos nesse projeto) \footnote{\url{https://vidyasheela.com/post/what-is-the-derivative-of-the-relu-activation-function-including-python-function}}.
+
+\begin{figure}[H]
+   \begin{center}
+      \includegraphics[width=10cm]{img/relu3.png}
+      \caption{A derivada da função ReLU} \label{relu3}
+   \end{center}
+\end{figure}
+
+
+\subsection[Criando nosso modelo]{Criando nosso modelo}
+
+\begin{lstlisting}[language=Python, caption=Modelo]
+
+class NeuralNet(nn.Module):
+    def __init__(self, input_size, hidden_size, num_classes):
+        super(NeuralNet, self).__init__()
+        self.l1 = nn.Linear(input_size, hidden_size)
+        self.l2 = nn.Linear(hidden_size, hidden_size)
+        self.l3 = nn.Linear(hidden_size, num_classes)
+        self.relu = nn.ReLU()
+
+    def forward(self, x):
+        out = self.l1(x)
+        out = self.relu(out)
+        out = self.l2(out)
+        out = self.relu(out)
+        out = self.l3(out)
+        # sem ativacao e sem softmax no final
+        return out
+
+\end{lstlisting}
+
+Aqui nós herdamos uma classe do NN.Module porque estaremos customizando o modelo e suas camadas.
+
+
+\section[Atribuindo o conjunto de dados ao modelo]{Atribuindo o conjunto de dados ao modelo}
+
+Usaremos algumas funções de Magic, escreva nossa classe.
+
+\textit{Define: funções de Magic} ou Métodos mágicos são métodos especiais em python que possuem sublinhados duplos (dunder) em ambos os lados do nome do método. Métodos mágicos são predominantemente usados para sobrecarga do operador. Sobrecarga de operador significa fornecer funcionalidade adicional aos operadores, o python invoca implicitamente os métodos mágicos para fornecer funcionalidade adicional a ele. Por exemplo, a multiplicação de dois inteiros pode ser feita usando o operador de multiplicação (2*3 = 6) e o mesmo operador pode ser usado para repetir a string (“maçã-” * 3 = ‘maçã- maçã- maçã’).
+Alguns exemplos de métodos mágicos são init, len, repr, add e etc \footnote{\url{https://www.analyticsvidhya.com/blog/2021/08/explore-the-magic-methods-in-python}}\footnote{\url{https://www.geeksforgeeks.org/dunder-magic-methods-python/}}.
+
+
+\begin{itemize}
+   \item O método init para inicialização é invocado sem qualquer chamada, quando uma instância de uma classe é criada, como construtores em algumas outras linguagens de programação, como C++, Java, PHP etc. Esses métodos são a razão pela qual podemos adicionar duas strings com ' +' operador sem qualquer typecast explícito.
+   \item O método getitem é usado para obter um item do atributo das instâncias invocadas. getitem é comumente usado com contêineres como lista, tupla, etc.
+   \item O método mágico len é usado para encontrar o comprimento dos atributos da instância. Quando usamos len(instance), ele retorna o comprimento do atributo de instância que geralmente é um container.
+\end{itemize}
+
+\begin{lstlisting}[language=Python, caption=Dataset]
+class ChatDataset(Dataset):
+
+    def __init__(self):
+        self.n_samples = len(X_train)
+        self.x_data = X_train
+        self.y_data = y_train
+
+    # suporte a indexacao de modo que o conjunto de dados[i] possa ser usado para obter a i-esima amostra
+
+    def __getitem__(self, index):
+        return self.x_data[index], self.y_data[index]
+
+    # podemos chamar len(dataset) para retornar o tamanho
+    def __len__(self):
+        return self.n_samples
+
+\end{lstlisting}
+
+
+\section[Hiperparâmetros]{Hiperparâmetros}
+Toda rede neural tem um conjunto de hiperparâmetros que precisam ser definidos antes do uso.
+
+Antes de instanciar nossa classe ou modelo de rede neural que escrevemos anteriormente, primeiro definiremos alguns hiperparâmetros que podem ser alterados de acordo.
+
+Os hiperparâmetros são parâmetros cujos valores controlam o processo de aprendizado e determinam os valores dos parâmetros do modelo que um algoritmo de aprendizado acaba aprendendo. O prefixo hyper sugere que são parâmetros de nível superior que controlam o processo de aprendizagem e os parâmetros do modelo que dele resultam.
+
+Um engenheiro de aprendizado de máquina projetando um modelo, faz a escolha de definer valores de hiperparâmetros que seu algoritmo de aprendizado usará antes mesmo do início do treinamento do modelo. Sob essa luz, os hiperparâmetros são considerados externos ao modelo porque o modelo não pode alterar seus valores durante o aprendizado/treinamento\footnote{\url{https://towardsdatascience.com/parameters-and-hyperparameters-aa609601a9ac}}\footnote{\url{https://machinelearningmastery.com/difference-between-a-batch-and-an-epoch}}\footnote{\url{https://www.javatpoint.com/hyperparameters-in-machine-learning}}.
+
+
+Hiperparâmetros:
+
+
+\begin{itemize}
+   \item  \textit{Define: Epoch} O número de épocas é um hiperparâmetro que define o número de vezes que o algoritmo de aprendizado funcionará em todo o conjunto de dados de treinamento.
+
+         Uma época significa que cada amostra no conjunto de dados de treinamento teve a oportunidade de atualizar os parâmetros internos do modelo.
+
+         Você pode pensar em um loop for sobre o número de épocas em que cada loop prossegue no conjunto de dados de treinamento. Dentro desse loop for há outro loop for aninhado que itera sobre cada lote de amostras, onde um lote tem o número de amostras "tamanho de lote" especificado.
+
+         O número de épocas é tradicionalmente grande, geralmente centenas ou milhares, permitindo que o algoritmo de aprendizado seja executado até que o erro do modelo seja suficientemente minimizado. Você pode ver exemplos do número de épocas na literatura e em tutoriais definidos para 10, 100, 500, 1000 e maiores.
+
+   \item \textit{Define: Batch} O tamanho do Batch é um hiperparâmetro que define o número de amostras para trabalhar antes de atualizar os parâmetros do modelo interno.
+
+         Pense em um Batch como um loop for iterando sobre uma ou mais amostras e fazendo previsões. No final do Batch , as previsões são comparadas com as variáveis de saída esperadas e um erro é calculado. A partir desse erro, o algoritmo de atualização é usado para melhorar o modelo, por exemplo. mover para baixo ao longo do gradiente de erro.
+
+   \item \textit{Define: Learnin Rate} O hiperparâmetro de taxa de aprendizado controla a taxa ou velocidade na qual o modelo aprende. Especificamente, ele controla a quantidade de erro distribuído com o qual os pesos do modelo são atualizados cada vez que são atualizados, como no final de cada lote de exemplos de treinamento.
+
+   \item \textit{Define: Hidden Units} As unidades ocultas fazem parte das redes neurais, que se referem aos componentes que compõem as camadas de processadores entre as unidades de entrada e saída em uma rede neural. É importante especificar o número de hiperparâmetros de unidades ocultas para a rede neural. Deve estar entre o tamanho da camada de entrada e o tamanho da camada de saída. Mais especificamente, o número de unidades ocultas deve ser 2/3 do tamanho da camada de entrada, mais o tamanho da camada de saída.
+
+\end{itemize}
+
+
+Veja mais sobre Hiperparâmetros aqui\footnote{\url{https://towardsdatascience.com/what-are-hyperparameters-and-how-to-tune-the-hyperparameters-in-a-deep-neural-network-d0604917584a}}.
+
+
+
+
+\begin{lstlisting}[language=Python, caption=Hiperparâmetros]
+# Hiperparametros
+num_epochs = 1000
+batch_size = 8
+learning_rate = 0.001
+input_size = len(X_train[0])
+hidden_size = 8
+output_size = len(tags)
+print(input_size, output_size)
+
+\end{lstlisting}
+
+\section[Perda e otimizador]{Perda e otimizador}
+
+Vamos agora instanciar as funções de modelo, perda e otimizador.
+
+Função de Perda: Cross Entropy
+Otimizador: Adam Optimizer
+
+\begin{lstlisting}[language=Python, caption=Perda e otimizador]
+dataset = ChatDataset()
+train_loader = DataLoader(dataset=dataset,
+                          batch_size=batch_size,
+                          shuffle=True,
+                          num_workers=0)
+
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+model = NeuralNet(input_size, hidden_size, output_size).to(device)
+
+# Perda e otimizador
+criterion = nn.CrossEntropyLoss()
+optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
+
+\end{lstlisting}
+
+\section[Treinando o Modelo]{Treinando o Modelo}
+
+\begin{lstlisting}[language=Python, caption=Treinando o Modelo]
+
+# Treine o modelo
+for epoch in range(num_epochs):
+    for (words, labels) in train_loader:
+        words = words.to(device)
+        labels = labels.to(dtype=torch.long).to(device)
+
+        # Forward pass
+        outputs = model(words)
+        # if y would be one-hot, we must apply
+        # labels = torch.max(labels, 1)[1]
+        loss = criterion(outputs, labels)
+
+        # Backward e optimize
+        optimizer.zero_grad()
+        loss.backward()
+        optimizer.step()
+
+    if (epoch+1) % 100 == 0:
+        print (f'Epoch [{epoch+1}/{num_epochs}], Loss: {loss.item():.4f}')
+
+
+print(f'final loss: {loss.item():.4f}')
+
+data = {
+"model_state": model.state_dict(),
+"input_size": input_size,
+"hidden_size": hidden_size,
+"output_size": output_size,
+"all_words": all_words,
+"tags": tags
+}
+
+
+\end{lstlisting}
+
+\begin{figure}[H]
+   \begin{center}
+      \includegraphics[width=10cm]{img/treinando.png}
+      \caption{output} \label{tmode}
+   \end{center}
+\end{figure}
+
+\textit{Define: Loss (Perda)} A perda é a penalidade para uma previsão ruim. Ou seja, a perda é um número que indica quão ruim foi a previsão do modelo em um único exemplo. Se a previsão do modelo for perfeita, a perda é zero; caso contrário, a perda é maior\footnote{\url{https://developers.google.com/machine-learning/crash-course/descending-into-ml/training-and-loss}}.
+
+\begin{figure}[H]
+   \begin{center}
+      \includegraphics[width=13cm]{img/Loss.png}
+      \caption{Loss} \label{loss}
+      \medskip
+      \small
+      Alta perda no modelo esquerdo; baixa perda no modelo direita.
+   \end{center}
+\end{figure}
+
+
+\subsection[Salvando o modelo treinado]{Salvando o modelo treinado}
+
+\begin{lstlisting}[language=Python, caption=Salvando o modelo treinado]
+
+FILE = "data.pth"
+torch.save(data, FILE)
+
+print(f'training complete. file saved to {FILE}')
+
+\end{lstlisting}
+
+\subsection[Carregando nosso modelo salvo]{Carregando modelo salvo}
+
+\begin{lstlisting}[language=Python, caption=Carregando modelo salvo]
+
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+with open('intents.json', 'r') as json_data:
+    intents = json.load(json_data)
+
+FILE = "data.pth"
+data = torch.load(FILE)
+
+input_size = data["input_size"]
+hidden_size = data["hidden_size"]
+output_size = data["output_size"]
+all_words = data['all_words']
+tags = data['tags']
+model_state = data["model_state"]
+
+model = NeuralNet(input_size, hidden_size, output_size).to(device)
+model.load_state_dict(model_state)
+model.eval()
+
+\end{lstlisting}
+
+\section[Usando o Chatbot]{Usando o Chatbot}
+
+Nosso modelo está pronto. Agora vamos finalmente conversar com nosso chatbot. Como nossos dados de treinamento eram muito limitados, só podemos conversar sobre alguns tópicos. O modelo pode ser treinado em um conjunto de dados maior para aumentar a generalização/conhecimento do Chatbot.
+
+\begin{lstlisting}[language=Python, caption=Chatbot]
+
+bot_name = "chatbotIA"
+print("Let's chat! (digite 'quit' para sair)")
+while True:
+    # frase = "Ola!"
+    sentence = input("Voce: ")
+    if sentence == "quit":
+        break
+
+    sentence = tokenize(sentence)
+    X = bag_of_words(sentence, all_words)
+    X = X.reshape(1, X.shape[0])
+    X = torch.from_numpy(X).to(device)
+
+    output = model(X)
+    _, predicted = torch.max(output, dim=1)
+
+    tag = tags[predicted.item()]
+
+    probs = torch.softmax(output, dim=1)
+    prob = probs[0][predicted.item()]
+    if prob.item() > 0.75:
+        for intent in intents['intents']:
+            if tag == intent["tag"]:
+                print(f"{bot_name}: {random.choice(intent['responses'])}")
+    else:
+        print(f"{bot_name}: Eu nao entendi...")
+
+
+\end{lstlisting}
+Usamos o conjunto de dados chamado intents.json que tem a estrutura completa mostrada
+no campo abaixo:
+\begin{lstlisting}[language=Python, caption= Dados de treino (completo)]
+   {
+      "intents": [
+        {
+          "tag": "saudacao",
+          "patterns": [
+            "Oi",
+            "Ei",
+            "Como voce esta",
+            "Tem alguem ai?",
+            "Ola",
+            "Bom dia"
+          ],
+          "responses": [
+            "Ei :-)",
+            "Ola, obrigado pela visita",
+            "Ola, o que posso fazer por voce?",
+            "Ola, como posso ajudar?"
+          ]
+        },
+        {
+          "tag": "adeus",
+          "patterns": ["Tchau", "Ate logo", "Adeus"],
+          "responses": [
+            "Ate mais tarde, obrigado pela visita",
+            "Tenha um bom dia",
+            "Tchau! Volte logo."
+          ]
+        },
+        {
+          "tag": "obrigado",
+          "patterns": ["Obrigado", "Isso e util", "Muito obrigado!"],
+          "responses": ["Feliz em ajudar!", "A qualquer momento!", "E um prazer"]
+        },
+        {
+          "tag": "itens",
+          "patterns": [
+            "Quais itens voce tem?",
+            "Que tipos de itens existem?",
+            "O que tem a venda?",
+            "O que vende?",
+            "O que voce vende?"
+          ],
+          "responses": ["Vendemos cafe e cha", "Temos cafe e cha"]
+        },
+        {
+          "tag": "pagamentos",
+          "patterns": [
+            "Voces aceitam cartoes de credito?",
+            "Voce aceita MasterCard?",
+            "Formas de pagamento?",
+            "Aceita Pix?",
+            "Posso pagar com Paypal?",
+            "aceita apenas dinheiro?"
+          ],
+          "responses": [
+            "Aceitamos VISA, Mastercard, Paypal e Pix!",
+            "Aceitamos a maioria dos principais cartoes de credito, Paypal e Pix"
+          ]
+        },
+        {
+          "tag": "entrega",
+          "patterns": [
+            "Quanto tempo a entrega demora?",
+            "Quais sao as formas de entregas?",
+            "Quanto tempo demora o envio?",
+            "Como funciona as entregas?",
+            "Quando recebo minha entrega?",
+            "Voce faz entregas?",
+            "Voce faz entregas em casa"
+          ],
+          "responses": ["Entrega demora 2-4 dias", "Envio demora 2-4 dias"]
+        },
+        {
+          "tag": "engracado",
+          "patterns": [
+            "Conte-me uma piada!",
+            "Diga-me algo engracado!",
+            "Voce sabe uma piada?"
+          ],
+          "responses": [
+            "Por que enviar SPAM e algo justificavel? -  Porque os fins justificam os emails",
+            "Que tipo de computador esta bombando nas redes sociais? - O deskTOP",
+            "Qual o endereco do site do cavalo? - www.cavalo pontocom pontocom pontocom",
+            "Por que o mouse e muito mimado? - Porque tudo o que ele quer, o mouse pad"
+          ]
+        },
+        {
+          "tag": "redirecionar",
+          "patterns": [
+            "Posso falar com uma pessoa?",
+            "Gostaria de conversar com um humano",
+            "Me coloque em contato com um funcionario"
+          ],
+          "responses": [
+            "Claro! Um dos atendentes entrara no chat em breve.",
+            "Um de nossos representantes entrara no chat em instantes, aguarde.",
+            "Desculpe, no momento nossos atendentes do chat se encontram indisponiveis. Podemos tentar resolver seu pedido pelo chatbot ou tente entrar em contato mais tarde."
+          ]
+        },
+        {
+          "tag": "sugestao",
+          "patterns": [
+            "Voce tem alguma sugestao de pedido?",
+            "Quais as melhores opcoes do dia?",
+            "Nao sei o que pedir.",
+            "O que voce me recomenda pedir?"
+          ],
+          "responses": [
+            "A bebida mais popular de nossa loja e o cafe.",
+            "Se esta precisando acordar um pouco, nos temos cafe!",
+            "Para aproveitar o momento enquanto relaxa um pouco temos um otimo cha!"
+          ]
+        }
+      ]
+    }
+
+\end{lstlisting}
+
+\begin{figure}[H]
+   \begin{center}
+      \includegraphics[width=16cm]{img/chatting.png}
+      \caption{Conversando com o modelo} \label{running}
+      \medskip
+      \small
+      tentamos usar frases fora da nossa base de treino.
+   \end{center}
+\end{figure}
+
+Nosso Modelo foi treinado com pouquíssimos exemplos, então não entende tudo o que passamos para ele.

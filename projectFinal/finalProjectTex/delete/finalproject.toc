@@ -1,0 +1,19 @@
+\contentsline {section}{\numberline {1}1. Definição do problema.}{1}{section.1}%
+\contentsline {section}{\numberline {2}Convertendo os arquivos .csv em .parquet}{4}{section.2}%
+\contentsline {section}{\numberline {3}Lendo os arquivos .parquet}{5}{section.3}%
+\contentsline {section}{\numberline {4}Entendendo um pouco dos dados}{5}{section.4}%
+\contentsline {subsubsection}{\numberline {4.0.1}Número de usuários únicos}{8}{subsubsection.4.0.1}%
+\contentsline {subsection}{\numberline {4.1}Limpeza dos Dados}{8}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Descartando NA e duplicatas}{9}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Limpando os nomes para o formato usado nas aulas}{9}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Transformando as Datas}{9}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Analisando}{16}{subsection.4.5}%
+\contentsline {subsubsection}{\numberline {4.5.1}Calorias x Passos}{16}{subsubsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.6}Tempo de sono}{20}{subsection.4.6}%
+\contentsline {subsection}{\numberline {4.7}Uso diário dos dispositivos}{22}{subsection.4.7}%
+\contentsline {subsection}{\numberline {4.8}Multi gráficos}{23}{subsection.4.8}%
+\contentsline {subsection}{\numberline {4.9}Achados}{28}{subsection.4.9}%
+\contentsline {subsubsection}{\numberline {4.9.1}Qualidade de sono}{28}{subsubsection.4.9.1}%
+\contentsline {subsubsection}{\numberline {4.9.2}Calorias e Intensidade}{28}{subsubsection.4.9.2}%
+\contentsline {subsubsection}{\numberline {4.9.3}Tempo de sono e passos no dia}{28}{subsubsection.4.9.3}%
+\contentsline {subsection}{\numberline {4.10}Recomendações}{28}{subsection.4.10}%
