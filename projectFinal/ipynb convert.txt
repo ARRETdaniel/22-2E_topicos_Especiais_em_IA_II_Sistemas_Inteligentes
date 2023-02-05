@@ -1,0 +1,5 @@
+https://mljar.com/blog/jupyter-notebook-pdf/
+
+
+jupyter nbconvert --to webpdf --allow-chromium-download your-notebook-file.ipynb
+jupyter nbconvert --to latex finalproject.ipynb
