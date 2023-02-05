@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2021.8.10)  5 FEB 2023 17:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2021.8.10)  5 FEB 2023 17:29
 entering extended mode
-**c:/Users/danie/Documents/Documents/Faculdade/22-2E_topicos_Especiais_em_IA_II_Sistemas_Inteligentes/projectFinal/finalProjectTex/textest/relatorioIA.tex
-(c:/Users/danie/Documents/Documents/Faculdade/22-2E_topicos_Especiais_em_IA_II_Sistemas_Inteligentes/projectFinal/finalProjectTex/textest/relatorioIA.tex
+**c:/Users/danie/Documents/Documents/Faculdade/22-2E_topicos_Especiais_em_IA_II_Sistemas_Inteligentes/projectFinal/finalProjectTex/relatorioTex/relatorioIA.tex
+(c:/Users/danie/Documents/Documents/Faculdade/22-2E_topicos_Especiais_em_IA_II_Sistemas_Inteligentes/projectFinal/finalProjectTex/relatorioTex/relatorioIA.tex
 LaTeX2e <2021-06-01>
 L3 programming layer <2021-06-01> (C:\Users\danie\AppData\Local\Programs\MiKTeX\tex/latex/abntex2\abntex2.cls
 Document Class: abntex2 2018/11/24 v-1.9.7 abnTeX2
@@ -1473,7 +1473,7 @@ Package: longtable 2021-05-07 v4.16 Multi-page Table package (DPC)
 \LT@p@ftn=\toks55
 )
 
-c:/Users/danie/Documents/Documents/Faculdade/22-2E_topicos_Especiais_em_IA_II_Sistemas_Inteligentes/projectFinal/finalProjectTex/textest/relatorioIA.tex:227: LaTeX Error: Option clash for package enumitem.
+c:/Users/danie/Documents/Documents/Faculdade/22-2E_topicos_Especiais_em_IA_II_Sistemas_Inteligentes/projectFinal/finalProjectTex/relatorioTex/relatorioIA.tex:227: LaTeX Error: Option clash for package enumitem.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
@@ -7383,12 +7383,12 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
  ) 
 Here is how much of TeX's memory you used:
  35315 strings out of 478864
- 617617 string characters out of 2848660
+ 617662 string characters out of 2848660
  1198990 words of memory out of 3000000
  52378 multiletter control sequences out of 15000+600000
  478860 words of font info for 144 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 87i,13n,92p,952b,803s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 87i,13n,92p,957b,803s stack positions out of 5000i,500n,10000p,200000b,80000s
 {C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}{C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}<C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbxi10.pfb><C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi6.pfb><C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri8.pfb><C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss10.pfb><C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss12.pfb><C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss17.pfb><C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb><C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy6.pfb><C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/danie/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtti10.pfb>
 Output written on relatorioIA.pdf (31 pages, 902644 bytes).
 PDF statistics:

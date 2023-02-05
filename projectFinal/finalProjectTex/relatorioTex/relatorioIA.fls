@@ -1,6 +1,6 @@
-PWD c:\Users\danie\Documents\Documents\Faculdade\22-2E_topicos_Especiais_em_IA_II_Sistemas_Inteligentes\projectFinal\finalProjectTex\textest
+PWD c:\Users\danie\Documents\Documents\Faculdade\22-2E_topicos_Especiais_em_IA_II_Sistemas_Inteligentes\projectFinal\finalProjectTex\relatorioTex
 INPUT C:\Users\danie\AppData\Local\MiKTeX\miktex\data\le\pdftex\pdflatex.fmt
-INPUT c:\Users\danie\Documents\Documents\Faculdade\22-2E_topicos_Especiais_em_IA_II_Sistemas_Inteligentes\projectFinal\finalProjectTex\textest\relatorioIA.tex
+INPUT c:\Users\danie\Documents\Documents\Faculdade\22-2E_topicos_Especiais_em_IA_II_Sistemas_Inteligentes\projectFinal\finalProjectTex\relatorioTex\relatorioIA.tex
 OUTPUT relatorioIA.log
 INPUT C:\Users\danie\AppData\Local\Programs\MiKTeX\tex\latex\abntex2\abntex2.cls
 INPUT C:\Users\danie\AppData\Local\Programs\MiKTeX\tex\latex\abntex2\abntex2.cls
